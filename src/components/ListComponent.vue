@@ -5,7 +5,7 @@
                 <v-icon x-large @click="complete(index)" v-if="completeCheckNum.indexOf(index) == -1">mdi-checkbox-outline</v-icon>
                 <v-icon x-large @click="completeCencle(index)" v-else> mdi-checkbox-marked</v-icon>
                 {{ todo }}
-                <v-icon class="remove_icon" x-large @click="removeList(todo)">mdi-close</v-icon>
+                <v-icon class="remove_icon" x-large @click="removeTodo(index)">mdi-close</v-icon>
             </li>
         </div>
     </div>
@@ -20,8 +20,10 @@ export default {
     data() {
         return {
             todos: this.propsdata,
+            todo: 0,
             completeList: [],
             completeCheckNum:[],
+
         }
     },
     methods: {
@@ -37,8 +39,9 @@ export default {
             this.completeCheckNum.splice(this.completeCheckNum.indexOf(index), 1)
             this.completeList.splice(this.completeList.indexOf(index), 1);
         },
-        removeList(index) {
-            console.log(index);
+        removeTodo(index) {
+            this.$emit('removeTodo', index)
+
         }
 
     },

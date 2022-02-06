@@ -1,6 +1,6 @@
 <template>
   <div class="date">
-        {{ month }}/{{ date }} {{ day }}
+    {{ month }}/{{ date }} {{ day }}
   </div>
 </template>
 

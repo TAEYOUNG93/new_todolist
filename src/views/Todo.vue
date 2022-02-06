@@ -3,7 +3,7 @@
         <header-component ></header-component>
         <count-component :todoList="todoList" :completeNumber="completeNumber"></count-component>
         <input-component v-on:addTodo="addTodo"></input-component>
-        <list-component :propsdata="todoList" v-on:completeTodos="completeTodos" v-on:removeList="remove" ></list-component>
+        <list-component :propsdata="todoList" v-on:completeTodos="completeTodos" v-on:removeTodo="removeTodo" ></list-component>
         <footer-component v-on:removeAll="removeAll"></footer-component>
     </div>
 </template>
@@ -42,8 +42,8 @@ export default {
         completeTodos(params) {
             this.completeNumber = params
         },
-        removeList(params) {
-            this.todoList.splice(this.todoList.indexOf(params), -1)
+        removeTodo(params) {
+            this.todoList.splice(params, 1)
         }
 
     },
