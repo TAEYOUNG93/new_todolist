@@ -1,6 +1,7 @@
 <template>
   <div>
-      <button @click="allClear()">All Clear</button>
+      <v-icon x-large class="all_clear" @click="allClear()">mdi-trash-can</v-icon>
+      <!-- <button @click="allClear()">All Clear</button> -->
   </div>
 </template>
 
@@ -14,6 +15,10 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.all_clear {
+    margin-left: 5%;
+    margin-bottom: 10%;
+}
 
 </style>

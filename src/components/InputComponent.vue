@@ -1,7 +1,7 @@
 <template>
   <div class="input_box">
       <input type="text" v-model="currentInput" @keyup.enter="addList">
-      <button @click="addList()">add</button>
+      <v-icon x-large class="add_icon" @click="addList()">mdi-plus-thick</v-icon>
   </div>
 </template>
 
@@ -14,11 +14,11 @@ export default {
     },
     methods: {
         addList() {
-            if(this.currentInput !== "") {
+            if(this.currentInput !== null) {
                 var param =  this.currentInput && this.currentInput.trim();
                 this.$emit('addTodo', param);
             }
-            this.currentInput = '';
+            this.currentInput = null;
         }
     }
 }
@@ -31,7 +31,7 @@ export default {
     height: 5%;
     display: flex;
     justify-content: center;
-    border: 4px solid white;
+    border: 7px solid white;
     padding: 5px;
     margin: 0 auto;
 }
@@ -46,5 +46,9 @@ export default {
 
 input:focus {
     outline: none;
+}
+
+.input_box > .add_icon {
+    margin-left: 6%;
 }
 </style>

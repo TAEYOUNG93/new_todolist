@@ -35,15 +35,15 @@ export default {
         },
         removeAll(params) {
             this.clear = params;
-            console.log(params);
             this.todoList = [];
-            this.completeNumber = []
+            this.completeNumber = [];
         },
         completeTodos(params) {
             this.completeNumber = params
         },
         removeTodo(params) {
-            this.todoList.splice(params, 1)
+            this.todoList.splice(params, 1);
+            this.completeNumber.splice(params, 1);
         }
 
     },
