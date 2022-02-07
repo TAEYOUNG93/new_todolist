@@ -4,7 +4,9 @@
             <li>
                 <v-icon x-large @click="complete(index)" v-if="completeCheckNum.indexOf(index) == -1">mdi-checkbox-outline</v-icon>
                 <v-icon x-large @click="completeCencle(index)" v-else> mdi-checkbox-marked</v-icon>
-                {{ todo }}
+                <div class="list_style" :class="{active : getActive()}">
+                    {{ todo }}
+                </div>
                 <v-icon class="remove_icon" x-large @click="removeTodo(index)">mdi-close</v-icon>
             </li>
         </div>
@@ -23,7 +25,7 @@ export default {
             todo: 0,
             completeList: [],
             completeCheckNum:[],
-
+            isActive: false,
         }
     },
     methods: {
@@ -32,16 +34,21 @@ export default {
                 this.completeList.push(index);
                 this.completeCheckNum.push(index);
             }
-            console.log(index);
             this.$emit('completeTodos', this.completeList)
+            
+            this.getActive(1);
+
         },
         completeCencle(index) {
             this.completeCheckNum.splice(this.completeCheckNum.indexOf(index), 1)
             this.completeList.splice(this.completeList.indexOf(index), 1);
+            this.getActive(0);
         },
         removeTodo(index) {
             this.$emit('removeTodo', index)
-
+        },
+        getActive() {
+        
         }
 
     },
@@ -74,6 +81,15 @@ li {
 li > .remove_icon {
     float: right;
     margin-right: 5%;
+}
+
+.list_style {
+    margin-left: 2%;
+    display: inline-block
+}
+
+.active {
+    text-decoration: line-through
 }
 
 
